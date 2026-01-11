@@ -29,6 +29,33 @@ class LibreTubeApp : Application() {
         PreferenceHelper.migrate()
 
         /**
+         * Auto-configure app with Piped mode on first launch to skip welcome screen
+         */
+        val isAppConfigured = PreferenceHelper.getBoolean(
+            com.github.libretube.constants.PreferenceKeys.LOCAL_FEED_EXTRACTION,
+            false
+        ) || PreferenceHelper.getString(
+            com.github.libretube.constants.PreferenceKeys.FETCH_INSTANCE,
+            ""
+        ).isNotEmpty()
+        
+        if (!isAppConfigured) {
+            // Automatically set Piped mode with hardcoded instance on first launch
+            PreferenceHelper.putString(
+                com.github.libretube.constants.PreferenceKeys.FETCH_INSTANCE,
+                com.github.libretube.api.RetrofitInstance.PIPED_API_URL
+            )
+            PreferenceHelper.putBoolean(
+                com.github.libretube.constants.PreferenceKeys.LOCAL_FEED_EXTRACTION,
+                false
+            )
+            PreferenceHelper.putBoolean(
+                com.github.libretube.constants.PreferenceKeys.LOCAL_STREAM_EXTRACTION,
+                false
+            )
+        }
+
+        /**
          * Set the api and the auth api url
          */
         ImageHelper.initializeImageLoader(this)

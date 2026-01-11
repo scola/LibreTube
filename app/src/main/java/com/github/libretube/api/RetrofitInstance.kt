@@ -11,7 +11,7 @@ import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import retrofit2.create
 
 object RetrofitInstance {
-    const val PIPED_API_URL = "https://pipedapi.kavin.rocks"
+    const val PIPED_API_URL = "https://pipedapi.ytbkids.online"
 
     val authUrl
         get() = if (

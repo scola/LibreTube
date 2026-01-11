@@ -103,8 +103,8 @@ class WelcomeViewModel(
 
     @Parcelize
     data class UiState(
-        val fullLocalMode: Boolean = true,
-        val selectedInstanceIndex: Int? = null,
+        val fullLocalMode: Boolean = false,
+        val selectedInstanceIndex: Int? = 0,
         val instances: List<PipedInstance> = emptyList(),
         @StringRes val error: Int? = null,
         val navigateToMain: Unit? = null,

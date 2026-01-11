@@ -139,6 +139,7 @@ object PreferenceKeys {
     const val SELECTED_DOWNLOAD_PLAYLIST_SORT_TYPE = "selected_download_playlist_sort_type"
     const val LAST_SHOWN_INFO_MESSAGE_VERSION_CODE = "last_shown_info_message_version"
     const val PREFERENCE_VERSION = "PREFERENCE_VERSION"
+    const val FIRST_LAUNCH_PLAYLIST_LOADED = "first_launch_playlist_loaded"
 
     // use the helper methods at PreferenceHelper to access these
     const val LAST_USER_SEEN_FEED_TIME = "last_watched_feed_time"

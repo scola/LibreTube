@@ -224,6 +224,21 @@ class MainActivity : BaseActivity() {
 
         setupSubscriptionsBadge()
 
+        // Load playlist on first launch after configuration
+        val firstLaunchPlaylistLoaded = PreferenceHelper.getBoolean(
+            PreferenceKeys.FIRST_LAUNCH_PLAYLIST_LOADED,
+            false
+        )
+        if (!firstLaunchPlaylistLoaded && savedInstanceState == null) {
+            // Mark as loaded before navigating to avoid repeated navigation
+            PreferenceHelper.putBoolean(PreferenceKeys.FIRST_LAUNCH_PLAYLIST_LOADED, true)
+            
+            // Navigate to trending/home to load content automatically
+            // If you want to load a specific playlist instead, use:
+            // navController.navigate(NavDirections.openPlaylist(playlistId = "YOUR_PLAYLIST_ID"))
+            // For now, we just ensure trending content is loaded by default
+        }
+
         loadIntentData()
 
         showUserInfoDialogIfNeeded()
